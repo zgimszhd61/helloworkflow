@@ -15,16 +15,10 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: 获取 git 差异
-      id: git-diff
-      run: |
-        echo "::set-output name=diff::$(git diff HEAD^ HEAD)"
-
-    - name: 读取 git 差异
-      run: |
-        echo "开始读取 git 差异"
-        python -c "
-        diff = '${{ steps.git-diff.outputs.diff }}'
-        print(diff)
-        "
-        echo "git 差异读取结束"
+    - name: 创建新的 issue
+      uses: actions-cool/issues-helper@v1.11
+      with:
+        actions: 'create-issue'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        body: '这是新的 issue 的内容'
+        labels: 'bug,help wanted'
