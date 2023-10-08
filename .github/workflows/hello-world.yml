@@ -15,11 +15,16 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: 读取 README 文件
+    - name: 获取 git 差异
+      id: git-diff
       run: |
-        echo "开始读取 README 文件"
+        echo "::set-output name=diff::$(git diff HEAD^ HEAD)"
+
+    - name: 读取 git 差异
+      run: |
+        echo "开始读取 git 差异"
         python -c "
-        with open('README.md', 'r') as file:
-            print(file.read())
+        diff = '${{ steps.git-diff.outputs.diff }}'
+        print(diff)
         "
-        echo "README 文件读取结束"
+        echo "git 差异读取结束"
