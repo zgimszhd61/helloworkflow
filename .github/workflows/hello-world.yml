@@ -15,9 +15,11 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: 运行 Python 脚本
+    - name: 读取 README 文件
       run: |
-        echo "开始运行 Python 脚本"
-        # 在这里编写您的 Python 脚本
-        python script.py
-        echo "Python 脚本运行结束"
+        echo "开始读取 README 文件"
+        python -c "
+        with open('README', 'r') as file:
+            print(file.read())
+        "
+        echo "README 文件读取结束"
