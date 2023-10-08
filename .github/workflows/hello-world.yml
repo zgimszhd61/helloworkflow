@@ -1,9 +1,9 @@
-name: demo_workflows
+name: demo
 
 on: [push]
 
 jobs:
-  示例任务:
+  build:
     runs-on: ubuntu-latest
 
     steps:
