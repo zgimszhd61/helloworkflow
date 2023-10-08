@@ -19,7 +19,7 @@ jobs:
       run: |
         echo "开始读取 README 文件"
         python -c "
-        with open('README', 'r') as file:
+        with open('README.md', 'r') as file:
             print(file.read())
         "
         echo "README 文件读取结束"
