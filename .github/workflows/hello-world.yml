@@ -1,33 +1,25 @@
-name: demo
+name: Auto Create PR
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  demo:
+  create_pr:
     runs-on: ubuntu-latest
-
     steps:
-    - name: 检出代码
-      uses: actions/checkout@v2
-
-    - name: 设置 Python 环境
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-
-    - name: 创建新的 PR
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-        - name: Create PR
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: |
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git config --global user.name "github-actions[bot]"
-            git checkout -b new-feature-branch
-            # 在这里添加你的修改代码的命令
-            git add .
-            git commit -m "Add new feature"
-            git push origin new-feature-branch
-            gh pr create --base main --head new-feature-branch --title "New Feature" --body "This PR adds a new feature."
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git checkout -b new-feature-branch
+          # 在这里添加你的修改代码的命令
+          git add .
+          git commit -m "Add new feature"
+          git push origin new-feature-branch
+          gh pr create --base main --head new-feature-branch --title "New Feature" --body "This PR adds a new feature."
