@@ -1,8 +1,18 @@
-name: Say Hello World
+name: 示例工作流程
+
 on: [push]
+
 jobs:
-  build:
+  示例任务:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Say Hello
-      run: echo "Hello World"
+    - name: 检出代码
+      uses: actions/checkout@v2
+
+    - name: 运行 shell 脚本
+      run: |
+        echo "开始运行 shell 脚本"
+        # 在这里编写您的 shell 脚本
+        echo "Hello, world!"
+        echo "shell 脚本运行结束"
