@@ -3,16 +3,21 @@ name: demo
 on: [push]
 
 jobs:
-  build:
+  demo:
     runs-on: ubuntu-latest
 
     steps:
     - name: 检出代码
       uses: actions/checkout@v2
 
-    - name: 运行 shell 脚本
+    - name: 设置 Python 环境
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: 运行 Python 脚本
       run: |
-        echo "开始运行 shell 脚本"
-        # 在这里编写您的 shell 脚本
-        echo "Hello, world!"
-        echo "shell 脚本运行结束"
+        echo "开始运行 Python 脚本"
+        # 在这里编写您的 Python 脚本
+        python script.py
+        echo "Python 脚本运行结束"
