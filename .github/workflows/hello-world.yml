@@ -20,5 +20,5 @@ jobs:
       with:
         actions: 'create-issue'
         token: ${{ secrets.GITHUB_TOKEN }}
-        body: '这是新的 issue 的内容-2'
+        body: '这是新的 issue 的内容-3'
         labels: 'bug,help wanted'
