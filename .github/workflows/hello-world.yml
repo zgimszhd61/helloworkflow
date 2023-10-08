@@ -15,10 +15,11 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: 创建新的 issue
-      uses: actions-cool/issues-helper@v1.11
+    - name: 创建新的 PR
+      uses: peter-evans/create-pull-request@v3
       with:
-        actions: 'create-issue'
         token: ${{ secrets.GITHUB_TOKEN }}
-        body: '这是新的 issue 的内容-3'
+        commit-message: '这是新的 PR 的提交信息'
+        title: '这是新的 PR 的标题'
+        body: '这是新的 PR 的内容'
         labels: 'bug,help wanted'
