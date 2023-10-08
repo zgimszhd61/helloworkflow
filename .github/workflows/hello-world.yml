@@ -15,10 +15,11 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: 创建新的分支
-      run: |
-        git checkout -b new-branch
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
-        git commit --allow-empty -m '创建新的分支'
-        git push origin new-branch
+    - name: 创建新的 PR
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: '这是新的 PR 的提交信息'
+        title: '这是新的 PR 的标题'
+        body: '这是新的 PR 的内容'
+        labels: 'bug,help wanted'
